@@ -7,7 +7,8 @@ project(
   ]
 )
 
-benchmark_dep = dependency('benchmark')
+benchmark_proj = subproject('google-benchmark')
+benchmark_dep = benchmark_proj.get_variable('google_benchmark_dep')
 
 executable(
   'mm',
@@ -17,7 +18,8 @@ executable(
   ],
 )
 
-gtest_dep = dependency('gtest_main')
+gtest_proj = subproject('gtest')
+gtest_dep = benchmark_proj.get_variable('gtest_main_dep')
 
 executable(
   'test-mm',
